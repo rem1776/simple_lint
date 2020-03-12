@@ -18,7 +18,7 @@
 # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 # Check for files that have trailing whitespace
-/whitespace_check.sh | tee /tmp/ws.out
+/whitespace_check.sh > /tmp/ws.out
 ws_nfiles=$(wc -l /tmp/ws.out | awk '{print $1}')
 if test $ws_nfiles -gt 0
 then
@@ -27,7 +27,7 @@ then
 fi
 
 # Check for Fortran files with tabs
-/ftn_tab_check.sh | tee /tmp/ftab.out
+/ftn_tab_check.sh > /tmp/ftab.out
 ftab_nfiles=$(wc -l /tmp/ftab.out | awk '{print $1}')
 if test $ftab_nfiles -gt 0
 then
@@ -39,7 +39,7 @@ fi
 if test $ws_nfiles -gt 0 || test $ftab_nfiles -gt 0
 then
    echo "::set-output name=lintSuccess::false"
-   if test "$0" = "true"
+   if test "$1" = "true"
    then
       exit 1
    fi
