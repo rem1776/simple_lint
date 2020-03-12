@@ -26,5 +26,4 @@
 #  * .inc .INC
 #  * .fh .FH
 #  * .for .FOR
-find -O3 . -iregex ".*\.\(f\(90\)?\|inc\|fh\|for\)$" \
-    -exec grep -l $'\t' {} \;
+find -O3 . -iregex ".*\.\(f\(90\)?\|inc\|fh\|for\)$" -exec grep -l $'\t' {} \;
