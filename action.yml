@@ -5,6 +5,10 @@ inputs:
       description: "Cause action to fail if lint errors found"
       required: false
       default: true
+   ftn_line_len:
+      description: "Max length allowed when checking Fortran files, including comments"
+      required: false
+      default: 120
 outputs:
    lintSuccess:
       description: "indicates if the the lint processes passed (true) or failed (false)"
