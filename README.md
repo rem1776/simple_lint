@@ -27,6 +27,7 @@ jobs:
            uses: underwoo/simple-lint@v1
            with:
              failure: false
+             ftn_line_length: 120
          - if: ! ${{ steps.wslint.outputs.lintSuccess }}
            run: exit 1
 ```
