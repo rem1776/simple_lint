@@ -15,7 +15,6 @@ outputs:
 runs:
    using: "docker"
    image: "Dockerfile"
-   args: ["${{ inputs.failure }}"]
 branding:
    icon: "shield"
    color: "blue"

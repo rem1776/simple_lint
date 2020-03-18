@@ -7,6 +7,7 @@ current list of lint actions are:
 
 * check for trailing whitespace
 * check Fortran files for use of tab characters
+* check Fortran files for lines longer then a specified length
 
 ## Example
 
