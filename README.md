@@ -25,7 +25,7 @@ jobs:
          - uses: actions/checkout@v2
          - name: Whitespace Lint
            id: wslint
-           uses: underwoo/simple-lint@v1
+           uses: NOAA-GFDL/simple-lint@v1
            with:
              failure: false
              ftn_line_length: 120
