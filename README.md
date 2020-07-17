@@ -7,6 +7,7 @@ current list of lint actions are:
 
 * check for trailing whitespace
 * check Fortran files for use of tab characters
+* check Fortran files for lines longer then a specified length
 
 ## Example
 
@@ -24,9 +25,10 @@ jobs:
          - uses: actions/checkout@v2
          - name: Whitespace Lint
            id: wslint
-           uses: underwoo/simple-lint@v1
+           uses: NOAA-GFDL/simple-lint@v1
            with:
              failure: false
+             ftn_line_length: 120
          - if: ! ${{ steps.wslint.outputs.lintSuccess }}
            run: exit 1
 ```

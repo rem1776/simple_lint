@@ -35,11 +35,21 @@ then
    cat /tmp/ftab.out
 fi
 
+# Check for Fortran files with lines longer than n characters
+# `n` is defined in an GitHub action variable.
+/ftn_line_length_check.sh $INPUT_FTN_LINE_LEN > /tmp/fllen.out
+fllen_nfiles=$(wc -l /tmp/fllen.out | awk '{print $1}')
+if test $fllen_nfiles -gt 0
+then
+   echo"::error::${fllen_nfiles} Fortran file(s) contain(s) lines longer than $INPUT_FTN_LINE_LEN characters"
+   cat /tmp/fllen.out
+fi
+
 # Prepare action output, and exit non-zero if requested to fail
-if test $ws_nfiles -gt 0 || test $ftab_nfiles -gt 0
+if test $ws_nfiles -gt 0 || test $ftab_nfiles -gt 0 || test $fllen_nfiles -gt 0
 then
    echo "::set-output name=lintSuccess::false"
-   if test "$1" = "true"
+   if test "$INPUT_FAILURE" = "true"
    then
       exit 1
    fi
