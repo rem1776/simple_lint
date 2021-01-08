@@ -17,6 +17,20 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
+# Function to only check ascii files for trailing white space
+trailing_space ()
+{
+  while read infile
+  do
+    if $(file --mime-encoding -b $infile | grep -q ascii);
+    then
+      egrep -l " +$" $infile;
+    fi
+  done
+}
+export -f trailing_space
+
 # Find all files in the working directory, ignoring the `.git` directory that
 # have trailing whitespace, and prints them to standard out.
-find . -type f -not -path "./.git/*" -exec egrep -l " +$" {} \;
+find . -type f -not -path "./.git/*" | trailing_space
+
