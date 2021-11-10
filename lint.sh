@@ -41,7 +41,7 @@ fi
 fllen_nfiles=$(wc -l /tmp/fllen.out | awk '{print $1}')
 if test $fllen_nfiles -gt 0
 then
-   echo"::error::${fllen_nfiles} Fortran file(s) contain(s) lines longer than $INPUT_FTN_LINE_LEN characters"
+   echo "::error::${fllen_nfiles} Fortran file(s) contain(s) lines longer than $INPUT_FTN_LINE_LEN characters"
    cat /tmp/fllen.out
 fi
 

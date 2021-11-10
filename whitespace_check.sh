@@ -30,7 +30,7 @@ trailing_space ()
 }
 export -f trailing_space
 
-# Find all files in the working directory, ignoring the `.git` directory that
+# Find all files in the working directory, ignoring the `.git` and `docs/images` directories that
 # have trailing whitespace, and prints them to standard out.
-find . -type f -not -path "./.git/*" | trailing_space
+find . -type f -not -path "./.git/*" -not -path "./docs/images/*" | trailing_space
 
