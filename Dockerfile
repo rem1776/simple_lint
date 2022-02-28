@@ -3,7 +3,7 @@ FROM ubuntu:latest
 LABEL maintainer="underwoo"
 
 RUN apt-get update && \
-    apt-get install -y shellcheck \
+    apt-get install -y shellcheck file \
     && rm -rf /var/lib/apt/lists/*
 
 COPY lint.sh lint.sh
